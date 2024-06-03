@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Container } from "@/components/container/container";
+import { MainContainer } from "@/components/containers/main-container";
+import { Header } from "@/components/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark relative`}>
-        <Container>
-          {children}
-        </Container>
+      <body className={`${inter.className} relative scroll pb-5 overflow-x-hidden dark`}>
+        {children}
       </body>
     </html>
   );

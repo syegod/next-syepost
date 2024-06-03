@@ -1,4 +1,7 @@
+'use client';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 
@@ -6,9 +9,10 @@ interface NotFoundProps {
 
 }
 
-const NotFound: FC<NotFoundProps> = async ({
+const NotFound: FC<NotFoundProps> = ({
 
 }) => {
+  const router = useRouter();
 
   return (
     <div className='absolute left-1/2 -translate-x-1/2 top-1/3'>
@@ -18,10 +22,10 @@ const NotFound: FC<NotFoundProps> = async ({
           <div className='h-7 w-[1px] bg-muted-foreground ' />
           <span>Page you looking for is not found.</span>
         </div>
-        <Link href={'.'} className='w-max h-max mx-auto flex items-center gap-1 hover:underline underline-offset-2'>
+        <Button onClick={() => router.back()} variant={'link'} className='w-max h-max mx-auto flex items-center gap-1 hover:underline underline-offset-2'>
           <IoIosArrowRoundBack size={25}/>
           <span>Get back</span>
-        </Link>
+        </Button>
       </div>
     </div>
   )

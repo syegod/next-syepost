@@ -18,7 +18,7 @@ export const RegisterSchema = z.object({
     }).max(20, {
         message: 'Maximum password length is 20'
     }),
-    username: z.string().min(4, {
+    name: z.string().min(4, {
         message: 'Minimum username length is 4'
     }).max(30, {
         message: 'Maximum username length is 30'

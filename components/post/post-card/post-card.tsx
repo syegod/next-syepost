@@ -5,6 +5,7 @@ import { FC } from 'react';
 import { BiRepost } from 'react-icons/bi';
 import { FaRegComment, FaRegHeart } from 'react-icons/fa';
 import { db } from '@/lib/db';
+import Image from 'next/image';
 
 interface PostCardProps {
 
@@ -36,9 +37,17 @@ export const PostCard: FC<PostCardProps> = async ({
                     <DotsHorizontalIcon />
                 </button>
             </div>
-            <div className='grid gap-4'>
-                <div className='cursor-pointer'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus laborum ea accusamus provident magnam iusto! Laborum, ab dolores! Fugit, labore minus! Distinctio officia repellendus vero animi porro assumenda quaerat incidunt fuga, nulla dolore ut est molestias eaque velit exercitationem quibusdam perferendis iste repudiandae tempore quas sequi vel cum! Adipisci enim id ratione labore asperiores dolores soluta assumenda fugiat facilis repellendus similique iusto, distinctio vitae in nostrum beatae, quis error vero temporibus rem sapiente totam! Doloribus voluptates magnam exercitationem porro officia, et minus repellendus aliquid amet corrupti iste enim, veniam eos reiciendis itaque maiores! Cum a reiciendis culpa ad harum.
+            <div className='grid gap-2 cursor-pointer'>
+                <div className='space-y-2'>
+                    <div className='overflow-hidden relative'>
+                        <Image src={'/post-placeholder.jpg'} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[350px]' />
+                    </div>
+                    <div className='text-lg font-semibold tracking-tight leading-tight line-clamp-2 pt-2'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste explicabo earum sit enim, minus eos repellendus voluptatum hic nihil dolor!
+                    </div>
+                    <div className='text-sm line-clamp-4'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus laborum ea accusamus provident magnam iusto! Laborum, ab dolores! Fugit, labore minus! Distinctio officia repellendus vero animi porro assumenda quaerat incidunt fuga, nulla dolore ut est molestias eaque velit exercitationem quibusdam perferendis iste repudiandae tempore quas sequi vel cum! Adipisci enim id ratione labore asperiores dolores soluta assumenda fugiat facilis repellendus similique iusto, distinctio vitae in nostrum beatae, quis error vero temporibus rem sapiente totam! Doloribus voluptates magnam exercitationem porro officia, et minus repellendus aliquid amet corrupti iste enim, veniam eos reiciendis itaque maiores! Cum a reiciendis culpa ad harum.
+                    </div>
                 </div>
                 <div className='flex items-center gap-4 px-1 text-sm'>
                     <button className='px-2 py-1 hover:bg-muted-foreground hover:text-primary-foreground rounded-lg transition flex gap-2 items-center'>
@@ -50,7 +59,7 @@ export const PostCard: FC<PostCardProps> = async ({
                         <span>211</span>
                     </button>
                     <button className='px-2 py-1 hover:bg-muted-foreground hover:text-primary-foreground rounded-lg transition flex gap-2 items-center'>
-                        <BiRepost size={24}/>
+                        <BiRepost size={24} />
                         <span>941</span>
                     </button>
                 </div>

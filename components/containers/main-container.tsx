@@ -1,18 +1,18 @@
 import { FC, ReactNode } from 'react';
 import { Header } from '../header/header';
+import Sidebar from '../sidebar/sidebar';
 
-interface ContainerProps {
+interface MainContainerProps {
     children: ReactNode;
 }
 
-export const Container: FC<ContainerProps> = ({
+export const MainContainer: FC<MainContainerProps> = ({
     children
 }) => {
-
     return (
         <div>
-            <Header/>
-            <div className='sm:container mx-auto md:px-44 pt-16'>
+            <Header />
+            <div className='container mx-auto px-2 lg:px-32 pt-20'>
                 {children}
             </div>
         </div>
