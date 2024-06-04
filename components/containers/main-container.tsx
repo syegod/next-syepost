@@ -11,7 +11,6 @@ export const MainContainer: FC<MainContainerProps> = ({
 }) => {
     return (
         <div>
-            <Header />
             <div className='container mx-auto px-2 lg:px-32 pt-20'>
                 {children}
             </div>

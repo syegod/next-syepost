@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from '../ui/dropdown-menu';
 import { Avatar } from '../user/avatar';
-import { SignOut } from '@/actions/sign-out';
+import { SignOut } from '@/actions/auth/sign-out';
 import { User } from 'next-auth';
+import { AlertDialogWrapper } from '../wrappers/alert-dialog-wrapper';
 
 interface UserNavProps {
     user: User;
@@ -34,9 +35,11 @@ export const UserNav: FC<UserNavProps> = ({
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className='cursor-pointer'>
-                    <button className='w-full' onClick={() => handleLogout()}>
-                        Logout
-                    </button>
+                    <AlertDialogWrapper danger title='Log out from your account' description='Are you sure you want logout?' action={handleLogout}>
+                        <button className='w-full text-start text-sm px-2 hover:bg-muted py-1.5 rounded'>
+                            Logout
+                        </button>
+                    </AlertDialogWrapper>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

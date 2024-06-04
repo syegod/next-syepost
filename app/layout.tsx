@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { MainContainer } from "@/components/containers/main-container";
 import { Header } from "@/components/header/header";
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} relative scroll pb-5 overflow-x-hidden dark`}>
+      <Header />
+      <NextTopLoader />
         {children}
       </body>
     </html>

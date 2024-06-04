@@ -6,6 +6,7 @@ import { BiRepost } from 'react-icons/bi';
 import { FaRegComment, FaRegHeart } from 'react-icons/fa';
 import { db } from '@/lib/db';
 import Image from 'next/image';
+import { PostCardButtons } from './post-card-buttons';
 
 interface PostCardProps {
 
@@ -49,20 +50,7 @@ export const PostCard: FC<PostCardProps> = async ({
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus laborum ea accusamus provident magnam iusto! Laborum, ab dolores! Fugit, labore minus! Distinctio officia repellendus vero animi porro assumenda quaerat incidunt fuga, nulla dolore ut est molestias eaque velit exercitationem quibusdam perferendis iste repudiandae tempore quas sequi vel cum! Adipisci enim id ratione labore asperiores dolores soluta assumenda fugiat facilis repellendus similique iusto, distinctio vitae in nostrum beatae, quis error vero temporibus rem sapiente totam! Doloribus voluptates magnam exercitationem porro officia, et minus repellendus aliquid amet corrupti iste enim, veniam eos reiciendis itaque maiores! Cum a reiciendis culpa ad harum.
                     </div>
                 </div>
-                <div className='flex items-center gap-4 px-1 text-sm'>
-                    <button className='px-2 py-1 hover:bg-muted-foreground hover:text-primary-foreground rounded-lg transition flex gap-2 items-center'>
-                        <FaRegHeart />
-                        <span>941</span>
-                    </button>
-                    <button className='px-2 py-1 hover:bg-muted-foreground hover:text-primary-foreground rounded-lg transition flex gap-2 items-center'>
-                        <FaRegComment />
-                        <span>211</span>
-                    </button>
-                    <button className='px-2 py-1 hover:bg-muted-foreground hover:text-primary-foreground rounded-lg transition flex gap-2 items-center'>
-                        <BiRepost size={24} />
-                        <span>941</span>
-                    </button>
-                </div>
+                <PostCardButtons/>
             </div>
         </div>
     )

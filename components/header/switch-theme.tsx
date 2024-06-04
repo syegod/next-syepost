@@ -57,7 +57,7 @@ export const SwitchTheme: FC<SwitchThemeProps> = ({
 
     return (
         <button onClick={handleClick}>
-            {theme === 'dark' ? <IoIosMoon size={20} /> : <MdOutlineWbSunny size={20} />}
+            {theme === 'dark' ? <IoIosMoon size={23} /> : <MdOutlineWbSunny size={23} />}
         </button>
     )
 }

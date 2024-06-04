@@ -40,3 +40,34 @@ export const sidebar_themes = [
         Icon: BiBook 
     },
 ]
+
+export const post_themes = [
+    {
+        label: 'Gaming',
+        value: 'gaming'
+    },
+    {
+        label: 'Movies',
+        value: 'movies'
+    },
+    {
+        label: 'IT & Dev',
+        value: 'dev'
+    },
+    {
+        label: 'Sports',
+        value: 'sports'
+    },
+    {
+        label: 'Music',
+        value: 'music'
+    },
+    {
+        label: 'Anime & Manga',
+        value: 'animeandmanga'
+    },
+    {
+        label: 'Books',
+        value: 'books'
+    },
+]

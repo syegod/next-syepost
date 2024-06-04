@@ -2,7 +2,7 @@
 import {FC} from 'react';
 import { Button } from '../ui/button';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { SignIn } from '@/actions/sign-in';
+import { SignIn } from '@/actions/auth/sign-in';
 
 interface SocialProps {
   
