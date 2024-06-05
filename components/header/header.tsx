@@ -23,7 +23,7 @@ export const Header: FC<HeaderProps> = async ({
                         <Logo />
                     </Link>
                     <div className='inline-flex items-center gap-10'>
-                        <Link href={'/post'} title='Create new post'>
+                        <Link href={'/post/create'} title='Create new post'>
                             <GoPlusCircle size={20} />
                         </Link>
                         <SwitchTheme />

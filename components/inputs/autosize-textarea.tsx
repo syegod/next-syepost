@@ -30,7 +30,7 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
 
     return (
         <div className='w-full flex flex-col items-end'>
-            <TextareaAutosize name={name} onChange={(e) => handleOnChange(e)} maxLength={maxLength} className={`w-full text-primary bg-background border-b outline-none appearance-none rounded scroll px-2 py-2 resize-none ${classNames}`} placeholder={placeholder} />
+            <TextareaAutosize name={name} onChange={(e) => handleOnChange(e)} maxLength={maxLength} className={`w-full text-primary bg-background border outline-none appearance-none rounded-lg scroll px-4 py-2 resize-none ${classNames}`} placeholder={placeholder} />
             <span className='pr-2'>{symbolsLeft}</span>
         </div>
     )

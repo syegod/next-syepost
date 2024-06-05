@@ -57,7 +57,7 @@ export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
             <PopoverContent className="p-0" side="bottom">
                 <Command>
                     <CommandInput placeholder="Search items..." className="h-9" />
-                    <CommandList>
+                    <CommandList className="scroll">
                         <CommandEmpty>
                                 No items found. 
                         </CommandEmpty>
