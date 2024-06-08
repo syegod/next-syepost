@@ -23,7 +23,7 @@ export const AddImage: FC<AddImageProps> = ({
             <input hidden type='file' id='add_image' onChange={(e) => handleChange((prev: any) => {
                 if (e.target.files?.[0]) {
                     return [...prev, {
-                        src: URL.createObjectURL(e.target.files[0]),
+                        file: e.target.files[0],
                         uid: uid()
                     }]
                 } else {

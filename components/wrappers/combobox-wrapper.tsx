@@ -18,7 +18,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { FC } from "react"
+import { Dispatch, FC, SetStateAction } from "react"
 
 
 
@@ -30,11 +30,14 @@ interface IListItem {
 interface ComboboxWrapperProps {
     list: IListItem[];
     placeholder: string;
+    handleChange: Dispatch<SetStateAction<string | null>>
+
 }
 
 export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
     list,
-    placeholder
+    placeholder,
+    handleChange
 }) => {
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState("")
@@ -59,7 +62,7 @@ export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
                     <CommandInput placeholder="Search items..." className="h-9" />
                     <CommandList className="scroll">
                         <CommandEmpty>
-                                No items found. 
+                            No items found.
                         </CommandEmpty>
                         <CommandGroup>
                             {list.map((framework) => (
@@ -67,6 +70,7 @@ export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
                                     key={framework.value}
                                     value={framework.value}
                                     onSelect={(currentValue) => {
+                                        handleChange(currentValue);
                                         setValue(currentValue === value ? "" : currentValue)
                                         setOpen(false)
                                     }}

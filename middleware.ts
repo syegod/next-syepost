@@ -2,6 +2,8 @@ import { auth } from "./auth";
 import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes } from "./routes";
 
 export default auth((req) => {
+    req.headers.set("x-pathname", req.nextUrl.pathname);
+    
     const { nextUrl } = req;
     const isLoggedIn = !!req.auth;
 

@@ -50,7 +50,7 @@ export const ImageCarousel: FC<ImageCarouselProps> = ({
 
     return (
         <div className='relative h-[400px] bg-muted rounded-lg'>
-            <Image src={image.src} id={image.uid} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[400px] relative top-1/2 -translate-y-1/2 mx-auto' />
+            <Image src={URL.createObjectURL(image.file)} id={image.uid} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[400px] relative top-1/2 -translate-y-1/2 mx-auto' />
             <ImageCarouselButton icon={<Cross1Icon />} handleClick={deleteImage} classNames='top-3 right-3' />
             {images.length > 1 &&
                 <>

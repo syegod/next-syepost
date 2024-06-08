@@ -10,12 +10,13 @@ import { AddImage } from './add-image';
 import Image from 'next/image';
 import { ImageCarousel } from '../post/image-carousel/image-carousel';
 import { convertFilesToSrcs } from '@/lib/image';
+import { toast } from 'sonner';
 
 
 interface CreatePostFormProps { }
 
 export interface IImage {
-    src: string;
+    file: File;
     uid: string;
 }
 
@@ -31,33 +32,45 @@ export const CreatePostForm: FC<CreatePostFormProps> = ({
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log(images);
-        // const formData = new FormData(e.currentTarget);
-        // formData.append('theme', theme || '');
-        // startTransition(async () => {
-        //     const response = await create_post(formData);
-        //     router.push('/');
-        // });
+        const formData = new FormData(e.currentTarget);
+        formData.append('theme', theme || '');
+        if (images.length > 0) {
+            images.forEach((v, i) => {
+                formData.append(`image@${v.uid}`, v.file);
+            });
+        }
+
+        startTransition(async () => {
+            const response = await create_post(formData);
+            if (response.success) {
+                router.push('/post/' + response.postid);
+            }
+            else if (response.error) {
+                toast.error(response.error, {
+                    closeButton: true
+                });
+            }
+        });
     }
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} method='POST' className='grid gap-y-6'>
             <h1 className='text-2xl font-bold'>Create a new post</h1>
-            <AddImage handleChange={setImages} />
+            {images.length < 10 && <AddImage handleChange={setImages} />}
             {images && <ImageCarousel images={images} handleChange={setImages} />}
             <div className='grid gap-y-2 mt-2'>
                 <h1 className='text-xl font-bold'>Title</h1>
-                <AutoSizeTextarea name='title' maxLength={250} placeholder='Enter post title here' />
+                <AutoSizeTextarea disabled={isPending} name='title' maxLength={250} placeholder='Enter post title here' />
             </div>
             <div className='grid gap-y-2'>
                 <h1 className='text-xl font-bold'>Text</h1>
-                <AutoSizeTextarea name='text' maxLength={750} placeholder='Enter post text here' />
+                <AutoSizeTextarea disabled={isPending} name='text' maxLength={5000} placeholder='Enter post text here' />
             </div>
             <div className='grid gap-y-2'>
                 <h1 className='text-xl font-bold'>Theme</h1>
-                <ComboboxWrapper list={post_themes} placeholder='Select theme' />
+                <ComboboxWrapper handleChange={setTheme} list={post_themes} placeholder='Select theme' />
             </div>
-            <Button type='submit' className='mt-6'>
+            <Button type='submit' disabled={isPending} className='mt-6'>
                 Create a post
             </Button>
         </form>

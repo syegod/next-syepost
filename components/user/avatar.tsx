@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 interface AvatarProps {
-  user?: User;
-  src?: string;
+  user?: User | null;
+  src?: string | null;
 }
 
 export const Avatar: FC<AvatarProps> = ({

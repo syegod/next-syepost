@@ -12,20 +12,6 @@ enum UserRole {
   ADMIN
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  passwordHash  String?
-  role          UserRole  @default(USER)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Account {
   userId            String
   type              String
@@ -45,4 +31,54 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  passwordHash  String?
+  role          UserRole  @default(USER)
+  posts         Post[]    @relation(name: "author")
+  liked         Post[]    @relation(name: "likes")
+  disliked      Post[]    @relation(name: "dislikes")
+  comments      Comment[]
+  commentsLiked Comment[] @relation(name: "comment_likes")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  postId    String?
+}
+
+model Post {
+  id       String    @id @default(cuid())
+  title    String
+  text     String
+  theme    String?   @default("blog")
+  images   String[]
+  author   User      @relation(name: "author", fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String
+  likes    User[]    @relation(name: "likes")
+  dislikes User[]    @relation(name: "dislikes")
+  views    Int       @default(0)
+  comments Comment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id     String  @id @default(cuid())
+  Post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+  author User    @relation(fields: [authorId], references: [id])
+  authorId String
+  text   String
+  likes  User[]  @relation(name: "comment_likes")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

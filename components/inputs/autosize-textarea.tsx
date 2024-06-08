@@ -8,6 +8,7 @@ interface AutoSizeTextareaProps {
     placeholder?: string;
     handleChange?: (e: string) => {};
     name?: string;
+    disabled?: boolean;
 }
 
 export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
@@ -15,7 +16,8 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
     maxLength,
     handleChange,
     placeholder,
-    name
+    name,
+    disabled = false
 }) => {
     const [symbolsLeft, setSymbolsLeft] = useState(maxLength);
 
@@ -30,8 +32,8 @@ export const AutoSizeTextarea: FC<AutoSizeTextareaProps> = ({
 
     return (
         <div className='w-full flex flex-col items-end'>
-            <TextareaAutosize name={name} onChange={(e) => handleOnChange(e)} maxLength={maxLength} className={`w-full text-primary bg-background border outline-none appearance-none rounded-lg scroll px-4 py-2 resize-none ${classNames}`} placeholder={placeholder} />
-            <span className='pr-2'>{symbolsLeft}</span>
+            <TextareaAutosize name={name} disabled={disabled} onChange={(e) => handleOnChange(e)} maxLength={maxLength} className={`${classNames} w-full text-primary bg-background border outline-none appearance-none rounded-lg scroll px-4 py-2 resize-none `} placeholder={placeholder} />
+            <span className='pr-2 text-xs py-1'>{symbolsLeft}</span>
         </div>
     )
 }
