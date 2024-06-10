@@ -12,7 +12,7 @@ const ProfilePage: FC<ProfilePageProps> = async ({
   return (
     <div className='max-w-screen-lg py-2 px-5'>
       <pre>
-        {JSON.stringify(session, null, 2)}
+        {JSON.stringify(session, null, 3)}
       </pre>
     </div>
   )
