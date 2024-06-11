@@ -11,3 +11,9 @@ export type ClientComment = Comment & {
     likes:  User,
     post: Post
 }
+
+export type ClientUser = Omit<User, 'passwordHash'> & {
+    posts: Post[],
+    liked: Post[],
+    comments: Comment[]
+}

@@ -19,12 +19,14 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { Dispatch, FC, SetStateAction } from "react"
+import { IconType } from "react-icons/lib"
 
 
 
 interface IListItem {
     value: string;
     label: string;
+    Icon?: IconType;
 }
 
 interface ComboboxWrapperProps {
@@ -52,12 +54,12 @@ export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
                     className="w-full justify-between"
                 >
                     {value
-                        ? list.find((framework) => framework.value === value)?.label
+                        ? list.find((item) => item.value === value)?.label
                         : placeholder}
                     <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="p-0" side="bottom">
+            <PopoverContent className="p-0 w-96" side="bottom">
                 <Command>
                     <CommandInput placeholder="Search items..." className="h-9" />
                     <CommandList className="scroll">
@@ -65,21 +67,21 @@ export const ComboboxWrapper: FC<ComboboxWrapperProps> = ({
                             No items found.
                         </CommandEmpty>
                         <CommandGroup>
-                            {list.map((framework) => (
+                            {list.map((item) => (
                                 <CommandItem
-                                    key={framework.value}
-                                    value={framework.value}
+                                    key={item.value}
+                                    value={item.value}
                                     onSelect={(currentValue) => {
                                         handleChange(currentValue);
                                         setValue(currentValue === value ? "" : currentValue)
                                         setOpen(false)
                                     }}
                                 >
-                                    {framework.label}
+                                    {item.label}
                                     <CheckIcon
                                         className={cn(
                                             "ml-auto h-4 w-4",
-                                            value === framework.value ? "opacity-100" : "opacity-0"
+                                            value === item.value ? "opacity-100" : "opacity-0"
                                         )}
                                     />
                                 </CommandItem>

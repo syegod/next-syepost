@@ -10,7 +10,7 @@ const RegisterPage: FC<RegisterPageProps> = async ({
 }) => {
 
     return (
-        <div className='mx-auto w-max pt-10 sm:pt-28 pb-10'>
+        <div className='mx-auto w-max pt-10 pb-10'>
             <RegisterForm />
         </div>
     )

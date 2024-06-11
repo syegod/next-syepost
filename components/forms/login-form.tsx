@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { FormSuccess } from './form-success';
 import { FormError } from './form-error';
 import { login } from '@/actions/auth/login';
+import { TbLoaderQuarter } from 'react-icons/tb';
 
 interface LoginFormProps {
 
@@ -70,7 +71,7 @@ export const LoginForm: FC<LoginFormProps> = ({
                 )} />
                 <FormSuccess message={success}/>
                 <FormError message={error}/>
-                <Button className='text-sm mt-4' type='submit'>
+                <Button className='text-sm mt-4' type='submit' disabled={isPending}>
                     Sign in
                 </Button>
                 <Link href={'/auth/register'}>
