@@ -21,7 +21,7 @@ const UserProfilePage: FC<ProfileParams> = async ({
     }
 
     return (
-        <div className='max-w-screen-lg py-2 px-5'>
+        <div className='max-w-screen-lg'>
             <ProfileCard isOwner={!!session && userData.id === session.user.id} userData={userData as unknown as ClientUser}/>
         </div>
     )

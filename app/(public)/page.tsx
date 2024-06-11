@@ -4,10 +4,11 @@ import { PostFeedSkeleton } from "@/components/post/post-feed-skeleton";
 import { Suspense } from "react";
 
 export default async function Home() {
+  const posts = await get_posts('latest');
   return (
     <div>
       <Suspense fallback={<PostFeedSkeleton />}>
-        <PostFeed orderBy="latest"/>
+        <PostFeed posts={posts} />
       </Suspense>
     </div>
   );

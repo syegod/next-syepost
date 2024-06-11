@@ -9,8 +9,6 @@ import { getTime } from '@/lib/convert-time';
 import { ButtonDropdown } from '../button-dropdown';
 import { auth } from '@/auth';
 import { delete_post } from '@/actions/post/delete-post';
-import { toast } from 'sonner';
-import { redirect } from 'next/navigation';
 
 interface PostCardProps {
     post: ClientPost;

@@ -39,6 +39,7 @@ export const CreateCommentForm: FC<CreateCommentFormProps> = ({
                 toast.success(res.success);
             }
         });
+        e.currentTarget.reset();
     }
 
     return (

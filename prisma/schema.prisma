@@ -50,7 +50,6 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  postId    String?
 }
 
 model Post {
@@ -71,13 +70,13 @@ model Post {
 }
 
 model Comment {
-  id     String  @id @default(cuid())
-  Post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId String
-  author User    @relation(fields: [authorId], references: [id])
+  id       String @id @default(cuid())
+  Post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId   String
+  author   User   @relation(fields: [authorId], references: [id])
   authorId String
-  text   String
-  likes  User[]  @relation(name: "comment_likes")
+  text     String
+  likes    User[] @relation(name: "comment_likes")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

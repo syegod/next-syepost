@@ -5,22 +5,24 @@ import { ClientPost } from '@/types';
 import { Post } from '@prisma/client';
 
 interface PostFeedProps {
-    orderBy: 'popular' | 'latest'
+    posts?: Post[] | null
 }
 
 export const PostFeed: FC<PostFeedProps> = async ({
-    orderBy
+    posts
 }) => {
-    const posts = await get_posts(orderBy);
-
-    if(!posts){
-        return null;
+    if (!posts || posts.length === 0) {
+        return (
+            <div className='text-muted-foreground w-full text-center'>
+                No posts found
+            </div>
+        )
     }
 
     return (
         <div className='mx-auto grid gap-y-5'>
             {posts.map((post, key) => (
-                <PostCard key={key} post={post as unknown as ClientPost}/>
+                <PostCard key={key} post={post as unknown as ClientPost} />
             ))}
         </div>
     )

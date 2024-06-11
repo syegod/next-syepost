@@ -1,4 +1,3 @@
-'use client';
 import { ClientUser } from "@/types";
 import { DotsHorizontalIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import { FC } from "react";
@@ -6,6 +5,7 @@ import { Avatar } from "../user/avatar";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { normalizeText } from "@/lib/normalize-text";
+import { ProfileTabs } from "./profile-tabs/profile-tabs";
 
 interface ProfileCardProps {
     userData: ClientUser,
@@ -16,11 +16,10 @@ const ProfileCard: FC<ProfileCardProps> = ({
     userData,
     isOwner
 }) => {
-    console.log(userData);
     return (
-        <div className="border rounded-xl grid gap-y-6 overflow-hidden">
+        <div className="border grid gap-y-4 rounded-xl overflow-x-hidden pb-5">
             <div className="grid relative">
-                <div className="bg-slate-500 h-20 w-full relative">
+                <div className="bg-gradient-to-r from-slate-300 to-neutral-200 h-20 w-full relative">
                     <button title="Edit profile screen image" className="absolute bottom-2 right-2 bg-background p-1.5 rounded-full hover:bg-background/50 transition shadow">
                         <Pencil1Icon className="text-primary" />
                     </button>
@@ -48,15 +47,16 @@ const ProfileCard: FC<ProfileCardProps> = ({
                                     Follow
                                 </Button>
                                 <Button size={'sm'} variant={'ghost'}>
-                                    <DotsHorizontalIcon/>
+                                    <DotsHorizontalIcon />
                                 </Button>
                             </div>
                         }
                     </div>
                 </div>
             </div>
-            <div>
-
+            <hr className="w-[90%] mx-auto" />
+            <div className="px-2 mt-2">
+                <ProfileTabs userId={userData.id}/>
             </div>
         </div>
     );

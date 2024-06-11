@@ -1,16 +1,16 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
 interface AuthErrorPageProps {
-  
+
 }
 
 const AuthErrorPage: FC<AuthErrorPageProps> = async ({
-  
+
 }) => {
 
   return (
     <div>
-        aboba
+      aboba
     </div>
   )
 }
