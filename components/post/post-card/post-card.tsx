@@ -43,17 +43,18 @@ export const PostCard: FC<PostCardProps> = async ({
                     </div>
                 </div>
                 {session && (session?.user.id === post.authorId || session?.user?.role === 'ADMIN') &&
-                            <ButtonDropdown handleSubmit={async () => {
-                                'use server'
-                                await delete_post(post.id)
-                            }} />
-                        }
+                    <ButtonDropdown handleSubmit={async () => {
+                        'use server'
+                        await delete_post(post.id)
+                    }} />
+                }
             </div>
             <div className='grid gap-4 overflow-hidden'>
                 <Link href={'/post/' + post.id} className='space-y-2 cursor-pointer'>
-                    <div className='overflow-hidden relative'>
-                        {post.images.length > 0 && <Image src={post.images[0]} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[350px]' />}
+                    {post.images.length > 0 && <div className='overflow-hidden relative'>
+                        <Image src={post.images[0]} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[350px]' />
                     </div>
+                    }
                     <div className='text-lg font-semibold tracking-tight leading-tight line-clamp-2 pt-2 overflow-hidden'>
                         {post.title}
                     </div>
@@ -61,7 +62,7 @@ export const PostCard: FC<PostCardProps> = async ({
                         {post.text}
                     </div>
                 </Link>
-                <PostCardButtons post={post} asPage={false} userId={session?.user.id!}/>
+                <PostCardButtons post={post} asPage={false} userId={session?.user.id!} />
             </div>
         </div>
     )

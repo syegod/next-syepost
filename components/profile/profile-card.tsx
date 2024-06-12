@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { normalizeText } from "@/lib/normalize-text";
 import { ProfileTabs } from "./profile-tabs/profile-tabs";
+import { MdOutlineSettings } from "react-icons/md";
 
 interface ProfileCardProps {
     userData: ClientUser,
@@ -19,11 +20,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
     return (
         <div className="border grid gap-y-4 rounded-xl overflow-x-hidden pb-5">
             <div className="grid relative">
-                <div className="bg-gradient-to-r from-slate-300 to-neutral-200 h-20 w-full relative">
-                    <button title="Edit profile screen image" className="absolute bottom-2 right-2 bg-background p-1.5 rounded-full hover:bg-background/50 transition shadow">
-                        <Pencil1Icon className="text-primary" />
-                    </button>
-                </div>
+                <div className="bg-gradient-to-r from-slate-300 to-neutral-200 h-20 w-full relative" />
                 <div className="w-16 absolute left-2 top-2">
                     <Avatar src={userData.image} user={userData} />
                 </div>
@@ -40,13 +37,15 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     <div className="">
                         {isOwner ?
                             <Link href={'/profile/settings'}>
-                                <Pencil1Icon />
+                                <Button type="button" size={'sm'} variant={'ghost'}>
+                                    <MdOutlineSettings className="hover:animate-spin" size={20}/>
+                                </Button>
                             </Link> :
                             <div className="inline-flex items-center gap-2">
-                                <Button size={'sm'} className="px-6">
+                                <Button type="button" size={'sm'} className="px-6">
                                     Follow
                                 </Button>
-                                <Button size={'sm'} variant={'ghost'}>
+                                <Button type="button" size={'sm'} variant={'ghost'}>
                                     <DotsHorizontalIcon />
                                 </Button>
                             </div>
@@ -56,7 +55,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
             </div>
             <hr className="w-[90%] mx-auto" />
             <div className="px-2 mt-2">
-                <ProfileTabs userId={userData.id}/>
+                <ProfileTabs userId={userData.id} />
             </div>
         </div>
     );

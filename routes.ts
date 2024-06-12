@@ -1,6 +1,7 @@
 export const protectedRoutes = [
     '/profile',
-    '/post/create'
+    '/post/create',
+    '/profile/settings'
 ];
 
 export const authRoutes = [
