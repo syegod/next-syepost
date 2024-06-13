@@ -12,5 +12,5 @@ export const getTime = (date: Date): string => {
     if(minutes < 2880){
         return `yesterday`
     }
-    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+    return date.toLocaleDateString();
 }

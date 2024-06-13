@@ -1,15 +1,22 @@
+import { notFound } from "next/navigation";
 import { auth } from "./auth";
-import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes } from "./routes";
+import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes } from "./routes";
 
 export default auth((req) => {
     req.headers.set("x-pathname", req.nextUrl.pathname);
     
     const { nextUrl } = req;
     const isLoggedIn = !!req.auth;
+    const userRole = req.auth?.user?.role;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
     const isProtectedRoute = protectedRoutes.includes(nextUrl.pathname);
+    const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
+
+    if(isAdminRoute && userRole !== 'ADMIN') {
+        return notFound();
+    }
 
     if (isApiAuthRoute) {
         return;
@@ -21,6 +28,8 @@ export default auth((req) => {
         }
         return;
     }
+
+    
 
     if (!isLoggedIn && isProtectedRoute) {
         return Response.redirect(new URL('/auth/login', nextUrl));

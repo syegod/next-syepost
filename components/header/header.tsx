@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = async ({
 }) => {
     const session = await auth();
     return (
-        <div className='sticky border-b w-full top-0 h-14 overflow-hidden left-0 bg-background/50 z-50 backdrop-blur overflow-x-hidden'>
+        <header className='sticky border-b w-full top-0 h-14 overflow-hidden left-0 bg-background/50 z-50 backdrop-blur overflow-x-hidden'>
             <div className='container mx-auto lg:px-32 h-full'>
                 <div className='inline-flex items-center h-full justify-between gap-10 w-full'>
                     <Link href={'/'} className='pb-1'>
@@ -39,6 +39,6 @@ export const Header: FC<HeaderProps> = async ({
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }

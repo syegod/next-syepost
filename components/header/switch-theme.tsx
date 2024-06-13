@@ -13,25 +13,27 @@ export const SwitchTheme: FC<SwitchThemeProps> = ({
     const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
     useEffect(() => {
-        const currentTheme = localStorage.getItem('theme');
+        if (window) {
+            const currentTheme = localStorage.getItem('theme');
 
-        if (!currentTheme) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            const body = document.querySelector('body');
-            if (currentTheme === 'dark') {
-                setTheme('dark');
-                if (!body?.classList.contains('dark')) {
-                    body?.classList.add('dark');
+            if (!currentTheme) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                const body = document.querySelector('body');
+                if (currentTheme === 'dark') {
+                    setTheme('dark');
+                    if (!body?.classList.contains('dark')) {
+                        body?.classList.add('dark');
+                    }
+                }
+                if (currentTheme === 'light') {
+                    setTheme('light');
+                    if (body?.classList.contains('dark')) {
+                        body?.classList.remove('dark');
+                    }
                 }
             }
-            if (currentTheme === 'light') {
-                setTheme('light');
-                if (body?.classList.contains('dark')) {
-                    body?.classList.remove('dark');
-                }
             }
-        }
     }, []);
 
     const handleClick = () => {

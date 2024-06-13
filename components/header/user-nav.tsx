@@ -35,6 +35,11 @@ export const UserNav: FC<UserNavProps> = ({
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className='cursor-pointer'>
+                    <Link href={'/admin'}>
+                        Admin panel
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className='cursor-pointer'>
                     <AlertDialogWrapper danger title='Log out from your account' description='Are you sure you want logout?' action={handleLogout}>
                         <button className='w-full text-start text-sm px-2 hover:bg-muted py-1.5 rounded'>
                             Logout

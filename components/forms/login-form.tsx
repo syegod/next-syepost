@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState, useTransition } from 'react';
+import { FC, useEffect, useState, useTransition } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Logo } from '../logo';
 import { Input } from '../ui/input';
@@ -14,6 +14,7 @@ import { FormSuccess } from './form-success';
 import { FormError } from './form-error';
 import { login } from '@/actions/auth/login';
 import { TbLoaderQuarter } from 'react-icons/tb';
+import { useSearchParams } from 'next/navigation';
 
 interface LoginFormProps {
 
@@ -22,9 +23,10 @@ interface LoginFormProps {
 export const LoginForm: FC<LoginFormProps> = ({
 
 }) => {
+    const searchParams = useSearchParams();
     const [isPending, startTransition] = useTransition();
     const [success, setSuccess] = useState<string | undefined>('');
-    const [error, setError] = useState<string | undefined>('');
+    const [error, setError] = useState<string | undefined>(searchParams.get('error') === 'OAuthAccountNotLinked' ? 'Email already exists.' : undefined);
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -32,6 +34,9 @@ export const LoginForm: FC<LoginFormProps> = ({
             password: ''
         }
     });
+
+    useEffect(() => {
+    }, [])
 
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
         setError("");

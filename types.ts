@@ -8,7 +8,7 @@ export type ClientPost = Post & {
 
 export type ClientComment = Comment & {
     author: User,
-    likes:  User,
+    likes: User,
     post: Post
 }
 
@@ -16,4 +16,9 @@ export type ClientUser = Omit<User, 'passwordHash'> & {
     posts: Post[],
     liked: Post[],
     comments: Comment[]
+}
+
+export type SortType = {
+    field: string;
+    order: 'desc' | 'asc'
 }

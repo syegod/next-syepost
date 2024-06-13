@@ -6,9 +6,11 @@ export const protectedRoutes = [
 
 export const authRoutes = [
     '/auth/login',
-    '/auth/register'
+    '/auth/register',
+    '/auth/error'
 ];
 
+export const adminPrefix = "/admin"
 export const apiAuthPrefix = "/api/auth"
 
 export const DEFAULT_LOGIN_REDIRECT = '/profile';

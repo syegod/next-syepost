@@ -1,17 +1,19 @@
+'use client'
+import { useSearchParams } from 'next/navigation';
 import { FC } from 'react';
 
 interface AuthErrorPageProps {
 
 }
 
-const AuthErrorPage: FC<AuthErrorPageProps> = async ({
+const AuthErrorPage: FC<AuthErrorPageProps> = ({
 
 }) => {
-
+  const params = useSearchParams();
   return (
-    <div>
-      aboba
-    </div>
+    <pre>
+      {JSON.stringify(params)}
+    </pre>
   )
 }
 export default AuthErrorPage
