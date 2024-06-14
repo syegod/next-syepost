@@ -29,7 +29,7 @@ export const Header: FC<HeaderProps> = async ({
                         <SwitchTheme />
                         <div>
                             {session ?
-                                <UserNav user={session.user!} />
+                                <UserNav session={session} />
                                 :
                                 <NavLink href='/auth/login'>
                                     Sign in

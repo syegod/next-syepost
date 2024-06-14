@@ -15,7 +15,7 @@ export default auth((req) => {
     const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
 
     if(isAdminRoute && userRole !== 'ADMIN') {
-        return notFound();
+        return Response.redirect(new URL('/', nextUrl))
     }
 
     if (isApiAuthRoute) {
@@ -28,8 +28,6 @@ export default auth((req) => {
         }
         return;
     }
-
-    
 
     if (!isLoggedIn && isProtectedRoute) {
         return Response.redirect(new URL('/auth/login', nextUrl));

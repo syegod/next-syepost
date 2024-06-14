@@ -18,7 +18,7 @@ export const SideBarItem: FC<SideBarItemProps> = ({
 }) => {
 
     return (
-        <Link href={href} className={`transition py-1.5 px-2 rounded inline-flex items-center justify-between ${isActive ? `bg-primary/80 text-background` : `hover:bg-primary/80 hover:text-background`}`} title={label}>
+        <Link href={href} className={`transition py-1.5 px-2 rounded inline-flex items-center justify-between ${isActive ? `bg-primary text-background` : `hover:bg-primary hover:text-background`}`} title={label}>
             <span className='max-w-[12ch] truncate'>
                 {label}
             </span>
