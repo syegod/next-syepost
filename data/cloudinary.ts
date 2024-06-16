@@ -26,9 +26,20 @@ export const upload_post_images = async (postid: string, images: File[]) => {
 
 export const delete_post_images = async (postid: string) => {
     try {
+        const resources = await cloudinary.api.resources({
+            type: 'upload',
+            prefix: `syepost/posts/${postid}`
+        });
 
+        for (const resource of resources.resources) {
+            await cloudinary.uploader.destroy(resource.public_id);
+        }
+
+        await cloudinary.api.delete_folder(`syepost/posts/${postid}`);
+
+        return true;
     } catch (err) {
         console.log(err);
-        throw err;
+        return false;
     }
 }

@@ -15,7 +15,7 @@ export const DialogWrapper: FC<DialogWrapperProps> = ({
 
     return (
         <Dialog>
-            <DialogTrigger asChild>
+            <DialogTrigger asChild className='cursor-pointer'>
                 {trigger}
             </DialogTrigger>
             <DialogContent className={`${classNames}`}>
