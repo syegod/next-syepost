@@ -11,6 +11,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { CustomCell } from "./custom-cell";
 
 
 interface CustomTableProps {
@@ -48,16 +49,16 @@ const CustomTable: FC<CustomTableProps> = ({
         <Table className="max-h-[40vh]">
             <TableHeader>
                 <TableRow>
-                    {Object.keys(table_data[0]).map(e => (
-                        <TableHead>{e}</TableHead>
+                    {Object.keys(table_data[0]).map((e, key) => (
+                        <TableHead key={key}>{e}</TableHead>
                     ))}
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {table_data.map(e => (
-                    <TableRow className="hover:bg-primary/90 hover:text-background transition cursor-pointer">
-                        {Object.values(e).map(elem => (
-                            <TableCell className="max-w-[20em] truncate">{JSON.stringify(elem)}</TableCell>
+                {table_data.map((e, key) => (
+                    <TableRow key={key} className="hover:bg-primary/90 hover:text-background transition cursor-pointer">
+                        {Object.values(e).map((elem, i) => (
+                            <CustomCell data={elem} key={i} />
                         ))}
                     </TableRow>
                 ))}

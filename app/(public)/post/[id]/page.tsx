@@ -14,6 +14,7 @@ import { CommentCard } from '@/components/post/comment/comment-card';
 import { ClientComment, ClientPost } from '@/types';
 import { ButtonDropdown } from '@/components/post/button-dropdown';
 import { delete_post } from '@/actions/post/delete-post';
+import { DialogWrapper } from '@/components/wrappers/dialog-wrapper';
 
 interface PostPageProps {
     params: any
@@ -61,11 +62,15 @@ const PostPage: FC<PostPageProps> = async ({
                     }
                 </div>
                 <div className='grid gap-4 overflow-hidden'>
-                    <div className='space-y-2'>
+                    <div className='gap-y-2 grid'>
                         {post.images.length > 0 && post.images.map((item, key) => (
-                            <div key={key} className='overflow-hidden relative'>
-                                <Image src={item} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[350px]' />
-                            </div>
+                            <DialogWrapper key={key} trigger={
+                                <div key={key} className='overflow-hidden relative'>
+                                    <Image src={item} alt='' sizes='100%' width={1000} height={1000} className='rounded-lg object-cover max-h-[350px]' />
+                                </div>
+                            }>
+                                <Image src={item} alt='' sizes='100%' width={1000} height={1000} className='w-full' />
+                            </DialogWrapper>
                         ))}
                         <div className='text-lg font-semibold tracking-tight leading-tight pt-2 overflow-hidden'>
                             {post.title}
