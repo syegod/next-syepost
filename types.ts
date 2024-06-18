@@ -8,7 +8,7 @@ export type ClientPost = Post & {
 
 export type ClientComment = Comment & {
     author: User,
-    likes: User,
+    likes: User[],
     post: Post
 }
 

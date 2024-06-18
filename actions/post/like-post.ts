@@ -12,7 +12,7 @@ export const like_post = async (postid: string) => {
             return { error: 'User not found.' }
         }
 
-        const user = await getUserById(session?.user.id!);
+        const user = await getUserById(session.user.id!);
 
         const post = await db.post.findUnique({
             where: { id: postid },

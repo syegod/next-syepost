@@ -5,7 +5,7 @@ import { EyeOpenIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { FC, useEffect, useState, useTransition } from 'react';
 import { BiLoader, BiLoaderCircle } from 'react-icons/bi';
-import { FaRegHeart, FaRegComment } from 'react-icons/fa';
+import { FaRegHeart, FaHeart, FaRegComment } from 'react-icons/fa';
 import { TbArrowBigDown, TbArrowBigDownFilled, TbArrowBigUpFilled, TbArrowBigUp } from "react-icons/tb";
 import { toast } from 'sonner';
 
@@ -47,7 +47,7 @@ export const PostCardButtons: FC<PostCardButtonsProps> = ({
         <div className={`flex items-center w-full justify-between gap-6 text-sm`}>
             <div className='flex items-center gap-6'>
                 <button disabled={isPending} title='Like' className={`${liked ? `hover:bg-background hover:text-primary text-background bg-primary` : `hover:bg-primary hover:text-background bg-transparent`} px-4 py-1 border border-primary inline-flex gap-2 items-center text-sm rounded-full transition`} id='like' onClick={() => handleLike()}>
-                    {liked === true ? <TbArrowBigUpFilled /> : <TbArrowBigUp />}
+                    {liked === true ? <FaHeart className='text-rose-500'/> : <FaRegHeart />}
                     {isPending ? <BiLoader className='animate-spin' size={20}/> : <span>{post.likes?.length | 0}</span>}
                 </button>
                 {!asPage && <Link href={`/post/${post?.id}#comments`} title='Comments' className={`${commented ? `hover:bg-background hover:text-primary text-background bg-primary` : `hover:bg-primary hover:text-background bg-transparent`} px-4 py-1 border border-primary rounded-full transition flex gap-2 items-center`}>

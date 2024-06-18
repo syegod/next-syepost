@@ -89,7 +89,7 @@ const PostPage: FC<PostPageProps> = async ({
                 <span className='text-lg font-medium'>{post.comments.length} comments</span>
                 {post.comments.length > 0 ? (
                     post.comments.map((item, key) => (
-                        <CommentCard key={key} comment={item as unknown as ClientComment} />
+                        <CommentCard key={key} session={session} comment={item as unknown as ClientComment} />
                     ))
                 ) : (
                     <div className='text-lg font-semibold text-muted-foreground text-center mt-5'>

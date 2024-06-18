@@ -8,16 +8,18 @@ import { ButtonDropdown } from '../button-dropdown';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import { toast } from 'sonner';
+import { Session } from 'next-auth';
+import { CommentCardButtons } from './comment-card-buttons';
 
 interface CommentCardProps {
-    comment: ClientComment
+    comment: ClientComment;
+    session?: Session | null;
 }
 
 export const CommentCard: FC<CommentCardProps> = async ({
-    comment
+    comment,
+    session
 }) => {
-
-    const session = await auth();
 
     if (!comment) {
         return null;
@@ -48,6 +50,9 @@ export const CommentCard: FC<CommentCardProps> = async ({
             </div>
             <div className='text-sm line-clamp-4 overflow-hidden'>
                 {comment?.text}
+            </div>
+            <div className=''>
+                <CommentCardButtons comment={comment} userId={session?.user?.id}/>
             </div>
         </div>
     )

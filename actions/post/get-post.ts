@@ -15,7 +15,8 @@ export const get_post = async (id?: string) => {
                     author: true,
                     comments: {
                         include: {
-                            author: true
+                            author: true,
+                            likes: true
                         },
                         orderBy: {
                             createdAt: 'desc'
