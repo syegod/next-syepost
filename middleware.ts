@@ -14,7 +14,11 @@ export default auth((req) => {
     const isProtectedRoute = protectedRoutes.includes(nextUrl.pathname);
     const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
 
-    if(isAdminRoute && userRole !== 'ADMIN') {
+    if(process.env.NODE_ENV === 'development'){
+        if(isAdminRoute && userRole !== 'ADMIN') {
+            return Response.redirect(new URL('/', nextUrl))
+        }
+    } else {
         return Response.redirect(new URL('/', nextUrl))
     }
 

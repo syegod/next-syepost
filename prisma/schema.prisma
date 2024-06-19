@@ -56,7 +56,7 @@ model Post {
   id       String    @id @default(cuid())
   title    String
   text     String
-  theme    String?   @default("blog")
+  theme    String   @default("blog")
   images   String[]
   author   User      @relation(name: "author", fields: [authorId], references: [id], onDelete: Cascade)
   authorId String

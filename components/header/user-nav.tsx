@@ -34,7 +34,7 @@ export const UserNav: FC<UserNavProps> = ({
                         Profile
                     </Link>
                 </DropdownMenuItem>
-                {session.user.role === 'ADMIN' &&
+                {process.env.NODE_ENV === 'development' && session.user.role === 'ADMIN' &&
                     <DropdownMenuItem asChild className='cursor-pointer'>
                         <Link href={'/admin'}>
                             Admin panel

@@ -6,10 +6,8 @@ import { Suspense } from "react";
 export default async function PopularPosts() {
     const posts = await get_posts('popular');
     return (
-        <div className="">
-            <Suspense fallback={<PostFeedSkeleton />}>
-                <PostFeed posts={posts} />
-            </Suspense>
-        </div>
+        <Suspense fallback={<PostFeedSkeleton />}>
+            <PostFeed posts={posts} />
+        </Suspense>
     );
 }
