@@ -24,3 +24,15 @@ export const RegisterSchema = z.object({
         message: 'Maximum username length is 30'
     })
 });
+
+export const ChangeUsernameSchema = z.string().min(4, {
+    message: 'Minimum username length is 4' 
+}).max(30, {
+    message: 'Maximum username length is 30'
+});
+
+export const ChangeEmailSchema = z.string().email().min(4, {
+    message: 'Minimum username length is 4' 
+}).max(30, {
+    message: 'Maximum username length is 30'
+});

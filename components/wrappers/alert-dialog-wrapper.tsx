@@ -42,7 +42,7 @@ export const AlertDialogWrapper: FC<AlertDialogWrapperProps> = ({
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className={danger ? `bg-rose-500 hover:bg-rose-500/70` : ``} onClick={action}>Continue</AlertDialogAction>
+                    <AlertDialogAction className={danger ? `bg-destructive hover:bg-rose-500/70 dark:text-primary` : ``} onClick={action}>Continue</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

@@ -18,7 +18,7 @@ export const PasswordSettingsForm: FC<PasswordSettingsFormProps> = ({
     return (
         <div className='p-3 border rounded-xl grid gap-y-6'>
             <div className='grid gap-y-2'>
-                <div className=''>
+                <div className='font-medium'>
                     Last time reseted
                 </div>
                 <div className='inline-flex items-center justify-between gap-x-10'>

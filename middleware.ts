@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { auth } from "./auth";
 import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes } from "./routes";
+import { NextResponse } from "next/server";
 
 export default auth((req) => {
     req.headers.set("x-pathname", req.nextUrl.pathname);
@@ -36,6 +37,8 @@ export default auth((req) => {
     if (!isLoggedIn && isProtectedRoute) {
         return Response.redirect(new URL('/auth/login', nextUrl));
     }
+    
+    return NextResponse.next();
 });
 
 export const config = {

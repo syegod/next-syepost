@@ -1,7 +1,7 @@
 import { get_user_data } from '@/actions/profile/get-user-data';
 import { auth } from '@/auth';
 import { PasswordSettingsForm } from '@/components/forms/password-settings-form';
-import { ProfileSettingsForm } from '@/components/forms/profile-settings-form';
+import { ProfileSettingsForm } from '@/components/forms/profile-settings/profile-settings-form';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ClientUser } from '@/types';
 import { notFound } from 'next/navigation';

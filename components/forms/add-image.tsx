@@ -1,26 +1,29 @@
 'use client';
-import { Dispatch, FC, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, FC, ReactNode, SetStateAction, useRef } from 'react';
 import { v4 as uid } from 'uuid';
 import { Button } from '../ui/button';
 
 interface AddImageProps {
     handleChange: (e: any) => void;
+    buttonInner?: ReactNode;
+    disabled?: boolean
 }
 
 export const AddImage: FC<AddImageProps> = ({
-    handleChange
+    handleChange,
+    buttonInner,
+    disabled = false
 }) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const toggleInput = () => {
-        const input = document.querySelector('#add_image') as HTMLInputElement;
-        if(input){
-            input.click();
-        }
+        console.log(inputRef);
+        inputRef.current?.click();
     }
 
-    return (
-        <div>
-            <input hidden type='file' id='add_image' onChange={(e) => handleChange((prev: any) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        handleChange((prev: any) => {
+            if (prev instanceof Array) {
                 if (e.target.files?.[0]) {
                     return [...prev, {
                         file: e.target.files[0],
@@ -29,9 +32,21 @@ export const AddImage: FC<AddImageProps> = ({
                 } else {
                     return prev;
                 }
-            })} />
-            <Button type='button' className='w-max shadow' onClick={toggleInput}>
-                Add post image
+            } else {
+                if (e.target.files?.[0]) {
+                    return e.target.files[0];
+                }
+            }
+        });
+    }
+
+
+    return (
+        <div>
+            <input ref={inputRef} hidden type='file' id='add_image' onChange={(e) => handleInputChange(e)} />
+
+            <Button disabled={disabled} type='button' size={'sm'} className='w-max shadow' onClick={toggleInput}>
+                {buttonInner || 'Add image'}
             </Button>
         </div>
     )

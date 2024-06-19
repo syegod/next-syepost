@@ -17,6 +17,7 @@ export const UserNav: FC<UserNavProps> = ({
 
     const handleLogout = async () => {
         await SignOut();
+        // console.log(session);
     }
 
     return (

@@ -38,6 +38,14 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
         signIn: '/auth/login',
         error: '/auth/error'
     },
+    events: {
+        async linkAccount({user}){
+            await db.user.update({
+                where: { id: user.id },
+                data: { emailVerified: new Date() }
+            })
+        }
+    },
     secret: process.env.AUTH_SECRET,
     callbacks: {
         async session({ token, session }) {
@@ -46,8 +54,16 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             }
             if (token.role && session.user) {
                 session.user.role = token.role as UserRole;
+            } 
+            if(token.picture && session.user){
+                session.user.image = token.picture;
             }
-            
+            if(token.email && session.user){
+                session.user.email = token.email;
+            }
+            if(token.name && session.user){
+                session.user.name = token.name;
+            }
             return session;
         },
         async jwt({ token }) {
@@ -58,7 +74,10 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             if (!existingUser) {
                 return token;
             }
+            token.email = existingUser.email;
+            token.name = existingUser.name;
             token.role = existingUser.role;
+            token.picture = existingUser.image;
             return token;
         }
     },
