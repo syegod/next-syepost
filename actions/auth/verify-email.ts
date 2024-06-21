@@ -2,14 +2,14 @@
 
 import { db } from "@/lib/db";
 
-export const verify_email = async (token: string, email: string) => {
+export const verify_email = async (token: string) => {
     try {
         const existingToken = await db.verificationToken.findFirst({
-            where: { token: token, email: email }
+            where: { token: token }
         });
         if (existingToken && existingToken.expiresAt > new Date()) {
             await db.user.update({
-                where: { email: email },
+                where: { email: existingToken.email },
                 data: {
                     emailVerified: new Date()
                 }

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+    output: 'standalone', // Required for serverless deployment
     images: {
         remotePatterns: [
             {

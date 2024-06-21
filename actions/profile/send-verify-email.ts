@@ -8,13 +8,19 @@ import crypto from 'crypto'
 export const send_verification_email = async () => {
     try {
         const session = await auth();
-        if(!session) return {error: 'User not found'}
+        if (!session) return { error: 'User not found' }
 
         const token = crypto.randomBytes(20).toString('hex');
 
-        await db.verificationToken.delete({
-            where: {email: session.user.email!}
+        const existingToken = await db.verificationToken.findUnique({
+            where: { email: session.user.email! }
         });
+
+        if (existingToken) {
+            await db.verificationToken.delete({
+                where: { email: session.user.email! }
+            });
+        }
 
         await db.verificationToken.create({
             data: {
@@ -24,11 +30,11 @@ export const send_verification_email = async () => {
             }
         });
         const subject = `Email confirmation for syepost`;
-        const text = `Verify your email by clicking on this <a href="${process.env.BASE_URL}/auth/verify-email?token=${token}&email=${session.user.email}">link</a>. Verification token expires ${new Date(Date.now() + 1800000).toLocaleString()}.`
+        const text = `Verify your email by clicking on this <a href="${process.env.BASE_URL}/auth/verify-email?token=${token}">link</a>. Verification token expires ${new Date(Date.now() + 1800000).toLocaleString()}.`
         await send_email(session?.user.email!, subject, text);
-        return {success: 'Email sent'}
+        return { success: 'Email sent' }
     } catch (err) {
         console.log(err);
-        return {error: 'Something went wrong'}
+        return { error: 'Something went wrong' }
     }
 }

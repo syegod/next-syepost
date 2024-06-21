@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
-import { auth } from "./auth";
 import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, protectedRoutes } from "./routes";
 import { NextResponse } from "next/server";
+import NextAuth from "next-auth";
+import authConfig from "./auth.config";
+
+const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
     req.headers.set("x-pathname", req.nextUrl.pathname);
