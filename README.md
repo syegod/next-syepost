@@ -5,7 +5,6 @@
 ## Table of Contents
 
 - [Features](#features)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Contact](#contact)
 
@@ -15,38 +14,6 @@
 - **Comment System:** Engage in discussions by commenting on posts.
 - **User Profiles:** View and manage your posts and comments.
 - **Responsive Design:** Optimized for both desktop and mobile devices.
-
-## Installation
-
-To set up the project locally, follow these steps:
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/yourusername/syepost.git
-    ```
-
-2. **Navigate to the project directory:**
-
-    ```bash
-    cd syepost
-    ```
-
-3. **Install dependencies:**
-
-    Ensure you have Node.js installed. Then, run:
-
-    ```bash
-    npm install
-    ```
-
-4. **Start the development server:**
-
-    ```bash
-    npm start
-    ```
-
-    The site should now be accessible at `http://localhost:3000`.
 
 ## Usage
 
