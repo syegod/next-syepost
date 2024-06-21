@@ -31,7 +31,6 @@ export const get_posts = async (orderBy: 'popular' | 'latest' = 'latest') => {
             });
         }
 
-        revalidatePath('/')
         return posts;
     } catch (err) {
         console.log(err);
