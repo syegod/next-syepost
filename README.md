@@ -4,15 +4,12 @@
 
 ## Table of Contents
 
-<<<<<<< HEAD
 =======
 - [Technologies](#technologies)
->>>>>>> 9b8d8dd82c40209fd18edea2395755ec9c209d21
 - [Features](#features)
 - [Usage](#usage)
 - [Contact](#contact)
 
-<<<<<<< HEAD
 ## Features
 
 - **Create Posts:** Write and publish posts on various topics.
@@ -30,13 +27,6 @@ Once the site is running, you can start using its features:
 4. **Explore:** Use the search functionality to find interesting posts and topics.
 
 
-## Contact
-
-For any questions or feedback, please reach out to me at:
-
-- **Email:** syegod362@gmail.com
-
-=======
 ## Technologies
 
 ### Cloudinary
@@ -82,7 +72,6 @@ For any questions or feedback, please reach out to me at:
 
 - **Email:** syegod362@gmail.com
 
->>>>>>> 9b8d8dd82c40209fd18edea2395755ec9c209d21
 ---
 
 Thank you for using Syepost! I hope you enjoy the platform.
