@@ -20,7 +20,7 @@ export default function RootLayout(
   
   return (
     <html lang="en">
-      <body className={`${inter.className} relative scroll pb-10 overflow-x-hidden dark`}>
+      <body className={`${inter.className} relative scroll pb-10 overflow-x-hidden dark a`}>
         <Header />
         {props.children}
         <NextTopLoader />
