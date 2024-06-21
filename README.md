@@ -33,4 +33,4 @@ For any questions or feedback, please reach out to me at:
 
 ---
 
-Thank you for using Syepost! We hope you enjoy the platform.
+Thank you for using Syepost! I hope you enjoy the platform.
