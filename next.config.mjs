@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+    experimental: {
+        appDir: true, // Ensure appDir is enabled for App Router
+    },
+    output: 'standalone', // Required for serverless deployment
     images: {
         remotePatterns: [
             {
