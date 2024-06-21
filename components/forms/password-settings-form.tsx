@@ -6,6 +6,7 @@ import { Pencil1Icon } from '@radix-ui/react-icons';
 import { Input } from '../ui/input';
 import { MdLockReset } from "react-icons/md";
 import { AlertDialogWrapper } from '../wrappers/alert-dialog-wrapper';
+import { send_reset_password_email } from '@/actions/profile/send-reset-password-email';
 
 interface PasswordSettingsFormProps {
     user: ClientUser;
@@ -25,8 +26,9 @@ export const PasswordSettingsForm: FC<PasswordSettingsFormProps> = ({
                     <div className=''>
                         <Input disabled={true} type='text' value={'Never'} />
                     </div>
-                    <AlertDialogWrapper danger title='Password reset' description='Are you sure you want to reset your password? You can do this action once every 2 weeks!' action={() => {
-                        console.log('aboba');
+                    <AlertDialogWrapper danger title='Password reset' description='Are you sure you want to reset your password? Mail with a link will be sent to your email address. Reset token will be valid 30 minutes.' action={async () => {
+                        // 'use server'
+                        await send_reset_password_email();
                     }}>
                         <Button type='button' size={'sm'} className='px-5 inline-flex items-center gap-x-3'>
                             Reset password

@@ -48,8 +48,9 @@ model User {
   comments      Comment[]
   commentsLiked Comment[] @relation(name: "comment_likes")
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  ResetPasswordToken ResetPasswordToken[]
 }
 
 model Post {
@@ -87,5 +88,14 @@ model VerificationToken {
   email     String   @unique
   token     String
   createdAt DateTime @default(now())
-  expiresAt DateTime 
+  expiresAt DateTime
+}
+
+model ResetPasswordToken {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  token     String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
 }

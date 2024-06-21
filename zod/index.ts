@@ -36,3 +36,9 @@ export const ChangeEmailSchema = z.string().email().min(4, {
 }).max(30, {
     message: 'Maximum username length is 30'
 });
+
+export const ResetPasswordSchema = z.string().min(6, {
+    message: 'Minimum password length is 6'
+}).max(20, {
+    message: 'Maximum password length is 20'
+})

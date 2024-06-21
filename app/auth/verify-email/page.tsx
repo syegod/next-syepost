@@ -16,18 +16,17 @@ const VerifyEmailPage: FC<VerifyEmailPageProps> = ({
     const [error, setError] = useState<string | undefined>();
     const [isPending, startTransition] = useTransition();
     const token = useSearchParams().get('token');
-    const email = useSearchParams().get('email');
 
     useEffect(() => {
         startTransition(async () => {
-            if (token && email) {
-                const result = await verify_email(token, email);
+            if (token) {
+                const result = await verify_email(token);
                 if (result.error) {
                     setError(result.error);
                 } 
             }
         })
-    }, [token, email])
+    }, [token])
 
     return (
         <div className='relative mx-auto w-max mt-44 '>

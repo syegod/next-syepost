@@ -16,7 +16,7 @@ const Sidebar: FC<SidebarProps> = ({
 }) => {
 
     const pathname = usePathname();
-    console.log(pathname);
+
     return (
         <section className='sticky top-20 overflow-x-hidden overflow-y-auto scroll w-full pr-2 border-r max-h-[80vh]'>
             <div className='grid gap-y-2 text-sm'>
